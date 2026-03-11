@@ -124,3 +124,7 @@ GitHub Pages
 * 데이터 파이프라인 기초 구현
 
 채용 공고를 수동으로 확인하는 번거로움을 줄이고 자동으로 알림을 받을 수 있도록 하는 것이 목표입니다.
+
+<img width="1040" height="319" alt="Snipaste_2026-03-11_21-51-02" src="https://github.com/user-attachments/assets/ef00ea55-8299-4411-a298-e67b66f5504e" />
+
+
