@@ -9,8 +9,9 @@ URL = "https://www.koreafilm.or.kr/kofa/news/recruit"
 res = requests.get(URL)
 soup = BeautifulSoup(res.text, "html.parser")
 
-title = soup.select_one("table tbody tr td a").text.strip()
-link = soup.select_one("table tbody tr td a")["href"]
+post = soup.select_one("table tbody tr td a")
+title = post.text.strip()
+link = "https://www.koreafilm.or.kr" + post["href"]
 
 with open("last_post.txt", "r") as f:
     old = f.read().strip()
@@ -21,12 +22,12 @@ if title != old:
     password = os.environ["EMAIL_PW"]
     receiver = os.environ["EMAIL_TO"]
 
-    msg = MIMEText(f"새 채용 공고 올라옴\n\n{title}\nhttps://www.koreafilm.or.kr{link}")
+    msg = MIMEText(f"새 채용 공고 올라옴\n\n{title}\n{link}")
     msg["Subject"] = "KOFA 채용 공고 알림"
     msg["From"] = sender
     msg["To"] = receiver
 
-    smtp = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+    smtp = smtplib.SMTP_SSL("smtp.naver.com", 465)
     smtp.login(sender, password)
     smtp.send_message(msg)
     smtp.quit()
